@@ -1,1 +1,69 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes spinOnce {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fall {
+  0% { transform: translateY(-100%) rotate(0deg); }
+  100% { transform: translateY(100vh) rotate(360deg); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-20px) rotate(180deg); }
+}
+
+.animate-fadeIn {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+.animate-spin-once {
+  animation: spinOnce 0.5s ease-out forwards;
+}
+
+.animate-fall {
+  animation: fall 3s linear infinite;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-confetti {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+}
+
+/* Improve focus visibility for accessibility */
+:focus {
+  outline: 2px solid theme('colors.blue.500');
+  outline-offset: 2px;
+}
+
+/* Smooth scrolling for the whole page */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Better touch targets on mobile */
+@media (max-width: 640px) {
+  button {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
